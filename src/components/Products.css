@@ -3,10 +3,10 @@
     display: flex;
     flex-flow: column;
     width: 50%;
-    align-self: center;
     align-items: center;
     padding-top: 1em;
     padding-bottom: 1em;
+    padding-left: 0;
     background-color:  #f2f1ed;
     list-style: none;
 }
@@ -24,8 +24,8 @@
     max-width: 300px;
     text-align: center;
     font-size: 2em;
-    background-color: rgba(0, 0, 100);
-    color: white;
+    background-color: yellow;
+    color: rgba(0, 0, 100);
     margin: 0;
     padding-bottom: 0.5em;
 }

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { act } from 'react-dom/test-utils';
 
 export interface CartState {
   cart: {
@@ -33,30 +34,26 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    incrementProductQuantity: (state, action: PayloadAction<number>) => {
-      const item = state.precart[action.payload];
-      item.quantity++;
+    incrementProductQuantity: (state, action: PayloadAction<number>): void => {
+      state.precart[action.payload].quantity++;
     },
-    decrementProductQuantity: (state, action: PayloadAction<number>) => {
-      const item = state.precart[action.payload];
-      item.quantity--;
+    decrementProductQuantity: (state, action: PayloadAction<number>): void => {
+      if (state.precart[action.payload].quantity > 0) {
+        state.precart[action.payload].quantity--;
+      };
     },
     addToCart: (state, action: PayloadAction<number>) => {
       const id = action.payload;
       if (state.cart[id]) {
         state.cart[id].quantity += state.precart[id].quantity;
       } else {
-        state.cart[id].quantity = state.precart[id].quantity;
-      }    
+        state.cart[id] = { quantity: state.precart[id].quantity };
+      }
+      state.precart[id].quantity = 0;
     }
   },
 });
 
 export const { incrementProductQuantity, decrementProductQuantity, addToCart } = cartSlice.actions;
-
-// The function below is called a selector and allows us to select a value from
-// the state. Selectors can also be defined inline where they're used instead of
-// in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
-export const selectQuantity = (state: CartState, action: PayloadAction<number>) => state.precart[action.payload].quantity;
 
 export default cartSlice.reducer;

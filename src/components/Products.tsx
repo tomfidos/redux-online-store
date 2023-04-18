@@ -1,12 +1,12 @@
+import { useSelector } from 'react-redux';
+
 import { useAppDispatch } from '../app/hooks';
-import { store } from '../app/store';
-import { decrementProductQuantity, incrementProductQuantity, addToCart } from '../features/cart/cartSlice';
+import { decrementProductQuantity, incrementProductQuantity, addToCart, CartState } from '../features/cart/cartSlice';
 import './Products.css';
 
 
 const Products = (): JSX.Element => {
 
-    const state = store.getState();
     const dispatch = useAppDispatch();
     
     return (
@@ -16,7 +16,7 @@ const Products = (): JSX.Element => {
                 <h3 className="product-name">Miód rzepakowy</h3>
                 <div className="buy-product">
                     <button className="button" onClick={() => dispatch(decrementProductQuantity(1))}>-</button>
-                    <span className="counter">{state.precart[1].quantity}</span>
+                    <span className="counter">{useSelector((state: CartState) => state.precart[1].quantity)}</span>
                     <button className="button" onClick={() => dispatch(incrementProductQuantity(1))}>+</button>
                     <button className="button" onClick={() => dispatch(addToCart(1))}>Dodaj do koszyka</button>
                 </div>
@@ -26,7 +26,7 @@ const Products = (): JSX.Element => {
                 <h3 className="product-name">Miód wielokwiatowy</h3>
                 <div className="buy-product">
                     <button className="button" onClick={() => dispatch(decrementProductQuantity(2))}>-</button>
-                    <span className="counter">{state.precart[2].quantity}</span>
+                    <span className="counter">{useSelector((state: CartState) => state.precart[2].quantity)}</span>
                     <button className="button" onClick={() => dispatch(incrementProductQuantity(2))}>+</button>
                     <button className="button" onClick={() => dispatch(addToCart(2))}>Dodaj do koszyka</button>
                 </div>
@@ -36,7 +36,7 @@ const Products = (): JSX.Element => {
                 <h3 className="product-name">Miód gryczany</h3>
                 <div className="buy-product">
                     <button className="button" onClick={() => dispatch(decrementProductQuantity(3))}>-</button>
-                    <span className="counter">{state.precart[3].quantity}</span>
+                    <span className="counter">{useSelector((state: CartState) => state.precart[3].quantity)}</span>
                     <button className="button" onClick={() => dispatch(incrementProductQuantity(3))}>+</button>
                     <button className="button" onClick={() => dispatch(addToCart(3))}>Dodaj do koszyka</button>
                 </div>

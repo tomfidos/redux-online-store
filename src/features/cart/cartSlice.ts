@@ -1,13 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { act } from 'react-dom/test-utils';
 
 export interface CartState {
-  cart: {
-    [id: number]: CartItem;
-  };
-  precart: {
-    [id: number]: CartItem;
-  }
+  cart: Cart;
+  precart: Cart;
+}
+
+export interface Cart {
+  [id: number]: CartItem;
 }
 
 const initialState: CartState = {

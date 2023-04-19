@@ -1,0 +1,85 @@
+{
+    "products": [
+        {
+            "product_id": 1,
+            "name": "miód rzepakowy",
+            "quantity": 10,
+            "price_pln": 50,
+            "img": "rzepak.jpg",
+            "category": "honey"
+        },
+        {
+            "product_id": 2,
+            "name": "miód wielokwiatowy",
+            "quantity": 20,
+            "price_pln": 50,
+            "img": "wielokwiat.jpg",
+            "category": "honey"
+        },
+        {
+            "product_id": 3,
+            "name": "miód gryczany",
+            "quantity": 5,
+            "price_pln": 70,
+            "img": "gryczany.jpg",
+            "category": "honey"
+        },
+        {
+            "product_id": 4,
+            "name": "miód nawłociowy",
+            "quantity": 5,
+            "price_pln": 100,
+            "img": "nawłociowy.jpg",
+            "category": "honey"
+        },
+        {
+            "product_id": 5,
+            "name": "miód spadziowy",
+            "quantity": 3,
+            "price_pln": 85,
+            "img": "spadziowy.jpg",
+            "category": "honey"
+        },
+        {
+            "product_id": 6,
+            "name": "pyłek",
+            "quantity": 20,
+            "price_pln": 50,
+            "img": "pyłek.jpg",
+            "category": "other"
+        },
+        {
+            "product_id": 7,
+            "name": "wosk",
+            "quantity": 15,
+            "price_pln": 40,
+            "img": "wosk.jpg",
+            "category": "other"
+            
+        },
+        {
+            "product_id": 8,
+            "name": "propolis",
+            "quantity": 5,
+            "price_pln": 90,
+            "img": "propolis.jpg",
+            "category": "other"
+        },
+        {
+            "product_id": 9,
+            "name": "miód rzepakowy kremowany",
+            "quantity": 15,
+            "price_pln": 60,
+            "img": "rzepak.jpg",
+            "category": "other"
+        },
+        {
+            "product_id": 10,
+            "name": "pierzga",
+            "quantity": 5,
+            "price_pln": 80,
+            "img": "pierzga.jpg",
+            "category": "other"
+        }
+    ]
+}

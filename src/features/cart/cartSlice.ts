@@ -1,30 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface CartState {
-  cart: Cart;
-  precart: Cart;
-}
-
-export interface Cart {
   [id: number]: CartItem;
 }
 
-const initialState: CartState = {
-  cart: {},
-  precart: {
-    1: {
-      quantity: 0,
-    },
-    2: {
-      quantity: 0,
-    },
-    3: {
-      quantity: 0,
-    },
-  },
-};
+const initialState: CartState = {};
 
-interface CartItem {
+export interface CartItem {
+  id: number,
   quantity: number;
 }
 
@@ -33,26 +16,21 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    incrementProductQuantity: (state, action: PayloadAction<number>): void => {
-      state.precart[action.payload].quantity++;
-    },
-    decrementProductQuantity: (state, action: PayloadAction<number>): void => {
-      if (state.precart[action.payload].quantity > 0) {
-        state.precart[action.payload].quantity--;
-      };
-    },
-    addToCart: (state, action: PayloadAction<number>) => {
-      const id = action.payload;
-      if (state.cart[id]) {
-        state.cart[id].quantity += state.precart[id].quantity;
+    addToCart: (state, action: PayloadAction<CartItem>) => {
+      const id = action.payload.id;
+      const quantity = action.payload.quantity
+      if (state[id]) {
+        state[id].quantity += quantity;
       } else {
-        state.cart[id] = { quantity: state.precart[id].quantity };
+        state[id] = {
+          id: id,
+          quantity: quantity,
+        };
       }
-      state.precart[id].quantity = 0;
     }
   },
 });
 
-export const { incrementProductQuantity, decrementProductQuantity, addToCart } = cartSlice.actions;
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

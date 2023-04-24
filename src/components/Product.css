@@ -1,0 +1,41 @@
+
+.product-wrapper {
+    margin-bottom: 1em;
+}
+
+.image {
+    max-width: 300px;
+    display: block;
+}
+
+.product-name {
+    max-width: 300px;
+    text-align: center;
+    font-size: 2em;
+    background-color: yellow;
+    color: rgba(0, 0, 100);
+    margin: 0;
+    padding-bottom: 0.5em;
+}
+
+.buy-product {
+    display: flex;
+    margin-top: 0.5em;
+    justify-content: center;
+}
+
+.button {
+    cursor: pointer;
+    font-size: 1.5em;
+    background-color: beige;
+    border-width: 1px;
+    color: rgba(0, 0, 100);
+}
+
+.counter {
+    background-color: white;
+    color: rgba(0, 0, 100);
+    font-size: 1.5em;
+    padding: 0.5em;
+    border-width: 1px;
+}

@@ -1,4 +1,4 @@
-import { CartState, Cart } from '../features/cart/cartSlice';
+import { CartState } from '../features/cart/cartSlice';
 import { store } from '../app/store';
 import productJson from '../productConfig.json';
 import './Basket.css';
@@ -7,8 +7,7 @@ import './Basket.css';
 const Basket = (): JSX.Element => {
 
     const state: CartState = store.getState();
-    const cartItemKeys: string[] = Object.keys(state.cart);
-    const cart: Cart = state.cart;
+    const cartItemKeys: string[] = Object.keys(state);
 
     const productMapping = productJson.products;
     
@@ -19,7 +18,7 @@ const Basket = (): JSX.Element => {
                 {cartItemKeys.map(key => {
                     const name = productMapping.find(({ product_id }) => product_id === parseInt(key))?.name;
                     return (
-                        <li key={key}>{name}: {cart[parseInt(key)].quantity}</li>
+                        <li key={key}>{name}: {state[parseInt(key)].quantity}</li>
                     );
                 })}
             </ul>

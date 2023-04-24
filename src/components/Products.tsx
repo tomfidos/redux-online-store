@@ -1,4 +1,3 @@
-
 import './Products.css';
 import productConfig from '../productConfig.json';
 import './Product';

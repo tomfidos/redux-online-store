@@ -36,12 +36,16 @@ export const cartSlice = createSlice({
         };
       }
     },
-    getCartTotalQuantity: (state, action: PayloadAction<CartItem>) => {
+    addToTotalQuantity: (state, action: PayloadAction<CartItem>) => {
       state.totalQuantity += action.payload.quantity;
-    }
+    },
+    removeFromCart: (state, action: PayloadAction<CartItem>) => {
+      delete state.cartItems[action.payload.id];
+      state.totalQuantity -= action.payload.quantity;
+    },
   },
 });
 
-export const { addToCart, getCartTotalQuantity } = cartSlice.actions;
+export const { addToCart, addToTotalQuantity, removeFromCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

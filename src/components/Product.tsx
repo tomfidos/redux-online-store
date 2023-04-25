@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { CartItem, addToCart, getCartTotalQuantity } from '../features/cart/cartSlice';
+import { CartItem, addToCart, addToTotalQuantity } from '../features/cart/cartSlice';
 import { useAppDispatch } from '../app/hooks';
 import './Product.css';
 
@@ -32,7 +32,7 @@ const Product = (props: ProductProps): JSX.Element => {
 
     const addToCartAndResetPrecart = (): void => {
         dispatch(addToCart(precart));
-        dispatch(getCartTotalQuantity(precart));
+        dispatch(addToTotalQuantity(precart));
         setPrecart({...precart, quantity: 0});
     }
 

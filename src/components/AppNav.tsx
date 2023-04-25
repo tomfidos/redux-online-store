@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import './AppNav.css';
+import { CartState } from '../features/cart/cartSlice';
 
 
 const AppNav = (): JSX.Element => {
@@ -10,7 +12,7 @@ const AppNav = (): JSX.Element => {
             <ul>
                 <li><Link to="/" className="navElement">Strona Główna</Link></li>
                 <li><Link to="/sklep" className="navElement">Sklep</Link></li>
-                <li><Link to="/koszyk" className="navElement">Koszyk</Link></li>
+                <li><Link to="/koszyk" className="navElement">Koszyk ({useSelector((state: CartState) => state.totalQuantity)})</Link></li>
             </ul>
         </nav>
     );

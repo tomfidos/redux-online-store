@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import './AppNav.css';
-import { CartState } from '../features/cart/cartSlice';
+import { CartState } from '../store/cart/cartSlice';
 
 
 const AppNav = (): JSX.Element => {

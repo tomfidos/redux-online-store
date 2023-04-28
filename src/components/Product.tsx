@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { CartItem, addToCart, addToTotalQuantity } from '../features/cart/cartSlice';
+import { CartItem, addToCart, addToTotalQuantity } from '../store/cart/cartSlice';
 import { useAppDispatch } from '../app/hooks';
 import './Product.css';
 

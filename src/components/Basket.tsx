@@ -1,7 +1,7 @@
 import { useAppDispatch } from '../app/hooks';
 import { useSelector } from 'react-redux';
 
-import { CartState, removeFromCart } from '../features/cart/cartSlice';
+import { CartState, removeFromCart } from '../store/cart/cartSlice';
 import { store } from '../app/store';
 import productJson from '../productConfig.json';
 import './Basket.css';

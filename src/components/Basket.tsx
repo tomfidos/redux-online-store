@@ -10,7 +10,7 @@ import './Basket.css';
 
 const Basket = (): JSX.Element => {
 
-    const cart: CartState = store.getState();
+    const cart: CartState = store.getState().cart;
     const cartItemKeys: string[] = Object.keys(cart.cartItems);
     const dispatch = useAppDispatch();
 

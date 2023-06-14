@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
+import { useAppSelector } from '../app/hooks';
 import './AppNav.css';
-import { selectTotalQuantity } from '../store/cart/cartSlice';
 
 
 const AppNav = (): JSX.Element => {
 
-    const totalQuantity = useSelector(selectTotalQuantity);
+    const totalQuantity = useAppSelector((state) => state.cart.totalQuantity);
+    const isLogged = useAppSelector((state) => state.customer.isLogged);
     
     return (
         <div className="nav-container">
@@ -19,12 +19,19 @@ const AppNav = (): JSX.Element => {
                     <li><Link to="/koszyk" className="nav-element">Koszyk ({totalQuantity})</Link></li>
                 </ul>
             </nav>
-            <nav className="nav nav-side">
-                <ul>
-                    <li><Link to="/login" className="nav-element">Login</Link></li>
-                    <li><Link to="/signup" className="nav-element">Rejestracja</Link></li>
-                </ul>
-            </nav>
+            {!isLogged &&
+                <nav className="nav nav-side">
+                    <ul>
+                        <li><Link to="/login" className="nav-element">Login</Link></li>
+                        <li><Link to="/signup" className="nav-element">Rejestracja</Link></li>
+                    </ul>
+                </nav>
+            }
+            {isLogged &&
+            <div className="nav nav-side">
+                <button>Logout</button>
+            </div>
+            }
         </div>
     );
 }

@@ -1,20 +1,26 @@
-import { useAppDispatch } from '../app/hooks';
-import { useSelector } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 
-import { removeFromCart, selectTotalQuantity } from '../store/cart/cartSlice';
+import { removeFromCart } from '../store/cart/cartSlice';
 import { CartState } from '../types/cartSliceTypes';
 import { store } from '../app/store';
 import productJson from '../productConfig.json';
 import './Basket.css';
+import { Customer } from '../types/customerSliceTypes';
+
+interface FullStore {
+    cart: CartState,
+    customer: Customer,
+}
 
 
 const Basket = (): JSX.Element => {
 
-    const cart: CartState = store.getState().cart;
-    const cartItemKeys: string[] = Object.keys(cart.cartItems);
+    const cartAndCustomer: FullStore = store.getState();
+    const items = cartAndCustomer.cart.cartItems;
+    const cartItemKeys: string[] = Object.keys(items);
     const dispatch = useAppDispatch();
 
-    const totalQuantity = useSelector(selectTotalQuantity);
+    const totalQuantity = useAppSelector((state) => state.cart.totalQuantity)
     const productMapping = productJson.products;
     
     return (
@@ -23,7 +29,7 @@ const Basket = (): JSX.Element => {
             <ul className="cart">
                 {cartItemKeys.map(key => {
                     const name = productMapping.find(({ product_id }) => product_id === parseInt(key))?.name;
-                    const item = cart.cartItems[parseInt(key)];
+                    const item = items[parseInt(key)];
                     return (
                         <div key={key} className="cart-item">
                             <li>{name}: {item.quantity}</li>

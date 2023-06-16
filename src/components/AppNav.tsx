@@ -28,9 +28,9 @@ const AppNav = (): JSX.Element => {
                 </nav>
             }
             {isLogged &&
-            <div className="nav nav-side">
-                <button>Logout</button>
-            </div>
+                <div className="nav nav-side logout">
+                    <span className="nav-element">Logout</span>
+                </div>
             }
         </div>
     );

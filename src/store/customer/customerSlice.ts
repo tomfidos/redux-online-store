@@ -12,12 +12,16 @@ export const customerSlice = createSlice({
     name: 'customer',
     initialState,
     reducers: {
-        login: (state, action: PayloadAction<Customer>): void => {
-            state.isLogged = action.payload.isLogged;
-            state.jwt_token = action.payload.jwt_token;
+        setLoginStatusAndData: (state, action: PayloadAction<Customer>): void => {
+            state.isLogged = !state.isLogged;
+            if (state.isLogged) {
+                state.jwt_token = action.payload.jwt_token;
+            } else {
+                state.jwt_token = null;
+            }
         },
     }
 });
 
-export const { login } = customerSlice.actions;
+export const { setLoginStatusAndData } = customerSlice.actions;
 export default customerSlice.reducer;

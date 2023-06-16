@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-import { login } from '../store/customer/customerSlice';
+import { setLoginStatusAndData } from '../store/customer/customerSlice';
 import { LoginResponse } from '../types/customerSliceTypes';
 import { useAppDispatch } from '../app/hooks';
 
@@ -40,7 +40,7 @@ const Login = (): JSX.Element => {
                 if (status !== 200) {
                     console.error(status);
                 } else {
-                    dispatch(login({
+                    dispatch(setLoginStatusAndData({
                         isLogged: true,
                         jwt_token: data.jwt_token,
                     }));

@@ -5,6 +5,7 @@ import axios from 'axios';
 import { setLoginStatusAndData } from '../store/customer/customerSlice';
 import { LoginResponse } from '../types/customerSliceTypes';
 import { useAppDispatch } from '../app/hooks';
+import './Views.css';
 
 const LOGIN: string = 'https://akademia108.pl/api/social-app/user/login';
 
@@ -53,10 +54,10 @@ const Login = (): JSX.Element => {
 
     return (
         <div>
-            <form onSubmit={loginUser}>
-                <input placeholder="Nazwa użytkownika" onChange={readUserName} />
-                <input placeholder="Hasło" onChange={readPassword} />
-                <button type="submit">Zaloguj się</button>
+            <form className="form" onSubmit={loginUser}>
+                <input className="input" placeholder="Nazwa użytkownika" onChange={readUserName} />
+                <input className="input" placeholder="Hasło" onChange={readPassword} />
+                <button className="button" type="submit">Zaloguj się</button>
             </form>
         </div>
     );

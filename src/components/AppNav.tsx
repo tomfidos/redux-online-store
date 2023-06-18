@@ -1,13 +1,27 @@
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-import { useAppSelector } from '../app/hooks';
+import { useAppSelector, useAppDispatch } from '../app/hooks';
 import './AppNav.css';
+import { setLoginStatusAndData } from '../store/customer/customerSlice';
+
+const LOGOUT = 'https://akademia108.pl/api/social-app/user/logout';
 
 
 const AppNav = (): JSX.Element => {
 
     const totalQuantity = useAppSelector((state) => state.cart.totalQuantity);
     const isLogged = useAppSelector((state) => state.customer.isLogged);
+    const dispatch = useAppDispatch();
+
+    const logoutUser = () => {
+        axios
+            .post(LOGOUT)
+            .then(() => {
+                dispatch(setLoginStatusAndData({ isLogged: false, jwt_token: null }));
+            })
+            .catch(error => console.error(error));
+    }
     
     return (
         <div className="nav-container">
@@ -29,7 +43,7 @@ const AppNav = (): JSX.Element => {
             }
             {isLogged &&
                 <div className="nav nav-side logout">
-                    <span className="nav-element">Logout</span>
+                    <span className="nav-element" onClick={logoutUser}>Logout</span>
                 </div>
             }
         </div>

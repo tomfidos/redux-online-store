@@ -53,13 +53,11 @@ const Login = (): JSX.Element => {
     }
 
     return (
-        <div>
-            <form className="form" onSubmit={loginUser}>
-                <input className="input" placeholder="Nazwa użytkownika" onChange={readUserName} />
-                <input className="input" placeholder="Hasło" onChange={readPassword} />
-                <button className="button" type="submit">Zaloguj się</button>
-            </form>
-        </div>
+        <form className="form" onSubmit={loginUser}>
+            <input className="input" placeholder="Nazwa użytkownika" onChange={readUserName} />
+            <input className="input" placeholder="Hasło" onChange={readPassword} />
+            <button className="button" type="submit">Zaloguj się</button>
+        </form>
     );
 }
 
